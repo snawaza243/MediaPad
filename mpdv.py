@@ -1,3 +1,16 @@
+################################################################
+# Title       : MediaPad | Home                                #
+# Authors(s)  : 11202722                                       #
+# Coordinator : Rajeev Gupta Sir                               #
+# Affiliation :                                                #
+# Address     : MMDU, Mullana Ambala                           #
+# Date        : 16/06/2022                                     #
+# Version     : 2.8                                            #
+################################################################
+
+#######################################################
+#              Voice to Text GUI,Functions            #
+#######################################################
 # //////////////////// || In Process || \\\\\\\\\\\\\\\\\\\\ #
 
 from playsound import playsound
@@ -5,19 +18,12 @@ from cProfile import label
 import imp
 from tkinter import *
 import tkinter as tk
-import tkinter
 import pyttsx3
 from asyncore import read
-from cProfile import label
 from math import factorial
-from tkinter import *
 from tkinter.filedialog import asksaveasfilename
 import os
 import tkinter.messagebox
-from tkinter import *
-from playsound import playsound
-import tkinter as tk
-from tkinter import *
 from googletrans import Translator
 engine = pyttsx3.init()
 
@@ -34,22 +40,9 @@ root.minsize(530, 350)
 
 
 
-root.iconbitmap(r'C:/Users/snawa/Desktop/Py_Pro_01_2.9/mpi.ico')
+root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
 
 
-################################################################
-# Title       : MediaPad | Voice to Text                       #
-# Author(s)   : 11202722, 23                                   #
-# Co-ordinator: Dr. Rajeev Gupta Sir                           #
-# Affiliation :                                                #
-# Address     : MMDU, Mullana Ambala                           #
-# Date        : 16/06/2022                                     #
-# Version     : 2.0                                            #
-################################################################
-
-#######################################################
-#              Voice to Text GUI,Functions            #
-#######################################################
 
 Msg = StringVar()
 

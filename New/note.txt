@@ -1,0 +1,5 @@
+57
+
+def openTranslate(args):
+    progpathf = __file__
+    os.startfile(progpathf)

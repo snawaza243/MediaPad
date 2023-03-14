@@ -1,11 +1,23 @@
+################################################################
+# Title       : MediaPad | Home                                #
+# Authors(s)  : 11202722                                       #
+# Coordinator : Rajeev Gupta Sir                               #
+# Affiliation :                                                #
+# Address     : MMDU, Mullana Ambala                           #
+# Date        : 16/06/2022                                     #
+# Version     : 2.8                                            #
+################################################################
+
+#######################################################
+#              Text 2 Audio GUI,Functions             #
+#######################################################
 import datetime
 from playsound import playsound
 from cProfile import label
 import imp
 from tkinter import *
 import tkinter as tk
-from tkinter import ttk
-import tkinter
+from tkinter import ttk 
 from PIL import ImageTk, Image  # pip install pillow for image
 from tkinter import messagebox
 from gtts import gTTS
@@ -21,23 +33,10 @@ root.minsize(530, 350)
 # root = tk.Tk()
 # root.iconbitmap('mpi.ico')
 
-root.iconbitmap(r'mpi.ico')
+root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
 
 
 
-################################################################
-# Title       : MediaPad | Text2Audio                          #
-# Authors(s)  : 11202722, 23                                   #
-# Co-ordinator: Dr. Rajeev Gupta Sir                           #
-# Affiliation :                                                #
-# Address     : MMDU, Mullana Ambala                           #
-# Date        : 16/06/2022                                     #
-# Version     : 2.0                                            #
-################################################################
-
-#######################################################
-#              Text 2 Audio GUI,Functions             #
-#######################################################
 
 Msg = StringVar()
 # Entry

@@ -1,3 +1,15 @@
+################################################################
+# Title       : MediaPad | Home                                #
+# Authors(s)  : 11202722                                       #
+# Coordinator : Rajeev Gupta Sir                               #
+# Affiliation :                                                #
+# Address     : MMDU, Mullana Ambala                           #
+# Date        : 16/06/2022                                     #
+# Version     : 2.8                                            #
+################################################################
+#######################################################
+#              Text 2 Text Language Translate         #
+#######################################################
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
@@ -11,19 +23,9 @@ root.title('MediaPad | Translate')
 root.geometry('530x330')
 root.maxsize(530, 350)
 root.minsize(530, 350)
-root.iconbitmap(r'C:/Users/snawa/Desktop/Py_Pro_01_2.9/mpi.ico')
+root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
 
 
-
-################################################################
-# Title       : MediaPad | Translate                           #
-# Authors(s)  : 11202722, 23                                   #
-# Co-ordinator: Dr. Rajeev Gupta Sir                           #
-# Affiliation :                                                #
-# Address     : MMDU, Mullana Ambala                           #
-# Date        : 16/06/2022                                     #
-# Version     : 2.0                                            #
-################################################################
 
 # translate function for translate function
 def translate():

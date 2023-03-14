@@ -1,10 +1,22 @@
+################################################################
+# Title       : MediaPad | Home                                #
+# Authors(s)  : 11202722                                       #
+# Coordinator : Rajeev Gupta Sir                               #
+# Affiliation :                                                #
+# Address     : MMDU, Mullana Ambala                           #
+# Date        : 16/06/2022                                     #
+# Version     : 2.8                                            #
+################################################################
+
+#######################################################
+#                  MediaPad Home View                 #
+#######################################################
 import os
 from tkinter import *
 import tkinter as tk
 import pyttsx3
 import tkinter.messagebox
 import tkinter as tk
-import pyttsx3
 from tkinter import *
 from hyperlink import*
 import webbrowser
@@ -14,15 +26,6 @@ from PIL import ImageTk, Image
 engine = pyttsx3.init()
 
 
-################################################################
-# Title       : MediaPad | Home                                #
-# Authos(s)   : 11202722,                                      #
-# Co-ordinate : Rajeev Gupta Sir                               #
-# Affiliation :                                                #
-# Address     : MMDU, Mullana Ambala                           #
-# Date        : 16/06/2022                                     #
-# Version     : 2.8                                            #
-################################################################
 
 
 root = tk.Tk()
@@ -30,7 +33,7 @@ root.title('MediaPad | Home')
 root.geometry('530x350')
 root.maxsize(530, 350)
 root.minsize(530, 350)
-root.iconbitmap(r'C:/Users/snawa/Desktop/Py_Pro_01_2.9/mpi.ico')
+# root.iconbitmap(r'C:/Users/snawa/Desktop/Py_Pro_01_2.9/mpi.ico')
 
 frame = Frame(root, width=530, height=350)
 frame.pack()
@@ -38,7 +41,7 @@ frame.place(anchor='center', relx=0.5, rely=0.5)
 
 # Create an object of tkinter ImageTk
 img = ImageTk.PhotoImage(Image.open(
-    "C:/Users/snawa\Desktop/Py_Pro_01_2.9/back.png"))
+    "C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/bgs.png"))
 # Create a Label Widget to display the text or Image
 label = Label(frame, image=img)
 label.pack()
@@ -54,8 +57,7 @@ def translatewindow():
 
 def aboutinfo():
     tkinter.messagebox.showinfo(
-        
-        "MediaPad", "\nThank you for usnig this application.\n\nCheck update at www.mediapad.com/update\n\nMail us for more info. snawaza243@gmail.com\n\n\n\t\t\tMediaPad")
+        "MediaPad", "\nThank you for using this application.\n\nCheck update at www.mediapad.com/update\n\nMail us for more info. snawaza243@gmail.com\n\n\n\t\t\tMediaPad")
 
 
 def exit():
