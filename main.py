@@ -859,5 +859,4 @@ bAbout.place(anchor='center', x=425, y=375)
 
 buttonexitM = Button(root, text="Exit", relief=RIDGE, borderwidth=1, font=('verdana', 10, 'bold'), cursor="hand2", bg='red', command=exit)
 buttonexitM.place(anchor='center', x=486, y=375)
-
 root.mainloop()
