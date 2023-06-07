@@ -1,8 +1,10 @@
 # MediaPad
 
-MediaPad is a Python-based desktop application that aims to provide a comprehensive set of features related to multimedia transcription, language conversion, and artificial voice generation. The application is currently in the development phase, but it is highly functional and efficient and can be used for various purposes.![image]((https://github.com/snawaza243/MediaPad/blob/main/component/view/Home.png))
+MediaPad is a Python-based desktop application that aims to provide a comprehensive set of features related to multimedia transcription, language conversion, and artificial voice generation. The application is currently in the development phase, but it is highly functional and efficient and can be used for various purposes.
 
-
+<p align="center">
+  <img src="https://github.com/snawaza243/MediaPad/blob/main/component/view/Home.png" width="60%" height="auto" />
+</p>
 ## Features
 
 The MediaPad application comes with a range of features that can be used in multimedia transcription, language conversion, and voice generation. These include:
