@@ -62,6 +62,7 @@ The current version of MediaPad is 2.8, released on June 16, 2022.
 - Initial release of MediaPad
 - Multimedia transcription and voice generation features added
 - Basic text notepad and language converter features included
+cxc
 
 ## License
 
@@ -71,12 +72,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 MediaPad is a comprehensive tool that provides a range of features related to multimedia transcription, language conversion, and artificial voice generation. The application is highly functional and efficient and can be used for various purposes like creating subtitles, captions, and more. With a user-friendly interface and easy-to-use features, MediaPad is an ideal tool for anyone who needs to work with multimedia content.
 You can add the authors and coordinator information, along with the affiliation, address, date, and version, in the "Contributors" and "Version History" sections of the README.md file. Here's an example of how you can add this information:
-
-### Contributors
-
-MediaPad was developed by 11202722 under the guidance of Rajeev Gupta Sir at MMDU, Mullana Ambala.
-
-
-
-You can also add the authors and coordinator information in the LICENSE file, under the "Copyright" section. Here's an example of how you can add this information:
- 
