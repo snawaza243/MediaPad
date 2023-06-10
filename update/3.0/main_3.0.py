@@ -5,7 +5,7 @@
 # Affiliation :                                                #
 # Address     : MMDU, Mullana Ambala                           #
 # Date        : 16/06/2022                                     #
-# Version     : 3.0 11-6-23                                    #
+# Version     : 3.0                                            #
 ################################################################
 
 #######################################################
@@ -893,8 +893,14 @@ def mp_voice2text(title):
     exit_btn = Button(window, text="Exit", relief=RIDGE,  borderwidth=2, bg="red", width=5, font=('Century Gothic', 10,), cursor="hand2", command=exit)
     exit_btn.place(x=467, y=315)
 
+
+
+
     # Start the GUI event loop
     window.mainloop()
+
+
+
 
 
 
@@ -940,7 +946,7 @@ color3High = "#88bb22"
 color3Low = "#88bb66"
 
 # random developer joke
-click_btn= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/smile.png')
+click_btn= PhotoImage(file='smile.png')
 #Let us create a label for button event
 img_label= Label(image=click_btn)
 #Let us create a dummy button and pass the image

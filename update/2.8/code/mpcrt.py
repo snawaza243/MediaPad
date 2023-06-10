@@ -32,9 +32,9 @@ root.minsize(530, 350)
 # root.iconbitmap(r'mpi.ico')
 # root = tk.Tk()
 # root.iconbitmap('mpi.ico')
-root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
+root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/icon.ico')
 
-# root.iconbitmap(r'component/mpi.ico')
+# root.iconbitmap(r'app/icon.ico')
 
 
 

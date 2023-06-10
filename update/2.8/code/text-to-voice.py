@@ -33,7 +33,7 @@ window.minsize(530, 350)
 # window = tk.Tk()
 # window.iconbitmap('mpi.ico')
 
-window.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
+window.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/icon.ico')
 Msg = StringVar()
 # Entry
 

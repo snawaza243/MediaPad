@@ -27,23 +27,27 @@ import tkinter.messagebox
 from googletrans import Translator
 engine = pyttsx3.init()
 
-root = tk.Tk()
-root.title('MediaPad | Voice to Text')
-root.geometry('530x330')
-root.maxsize(530, 350)
-root.minsize(530, 350)
+window = tk.Tk()
+window.title('MediaPad | Voice to Text')
+window.geometry('530x330')
+window.maxsize(530, 350)
+window.minsize(530, 350)
 
 # p1 = PhotoImage(file = 'info.png')
 # # Setting icon of master window
-# root.iconphoto(False, p1)
-# # root.iconbitmap(r'mpi.ico')
+# window.iconphoto(False, p1)
+# # window.iconbitmap(r'mpi.ico')
 
 
-root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
+
+window.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/icon.ico')
+
+
+
 Msg = StringVar()
 
 # text area
-t1 = Text(root, width=62, height=10, borderwidth=2,
+t1 = Text(window, width=62, height=10, borderwidth=2,
           pady=5, padx=5, relief=RIDGE)
 t1.place(x=10, y=100)
 # Function to Reset
@@ -56,11 +60,11 @@ def Reset():
 
 def clear():
     t1.delete(1.0, 'end')
-# exigt function for button
+# exit function for button
 
 
 def exit():
-    root.destroy()
+    window.destroy()
 
 # About infor function for about button
 def aboutinfo():
@@ -77,9 +81,11 @@ def recordnow():
 
     # Initialize the recognizer
     r = sr.Recognizer()
+
     # Function to convert text to
     # speech
     def SpeakText(command):
+
         # Initialize the engine
         engine = pyttsx3.init()
         engine.say(command)
@@ -140,7 +146,7 @@ def saveFile():
             f = open(file, "w")
             f.write(t1.get(1.0, END))
             f.close()
-            root.title(os.path.basename(file) + " - Notepad ")
+            window.title(os.path.basename(file) + " - Notepad ")
     else:
         f = open(file, "w")
         f.write(t1.get(1.0, END))
@@ -152,7 +158,7 @@ def Copyt():
 
 
 # Ringht click menu list in  text area
-m = Menu(root, tearoff=0)
+m = Menu(window, tearoff=0)
 m.add_command(label="Cut",)
 m.add_command(label="Copy")
 m.add_command(label="Paste")
@@ -163,7 +169,7 @@ m.add_command(label="Undo")
 
 def do_popup(event):
     try:
-        m.tk_popup(event.x_root, event.y_root)
+        m.tk_popup(event.x_window, event.y_window)
     finally:
         m.grab_release()
 
@@ -171,46 +177,34 @@ def do_popup(event):
 t1.bind("<Button-3>", do_popup)
 
 # instruction label
-ltranslate = Label(root, text="Voice into Text",
+ltranslate = Label(window, text="Voice into Text",
                    font=("Century Gothic", 22, "bold"))
 ltranslate.place(x=160, y=15)
-button4 = Button(root, text="Record", relief=RIDGE, borderwidth=3,
+button4 = Button(window, text="Record", relief=RIDGE, borderwidth=3, width=8,
                  font=('verdana', 10, 'bold'), cursor="hand2", command=recordnow)
 button4.place(x=10, y=280)
 
-button5 = Button(root, text="Save", relief=RIDGE, borderwidth=3,
+button5 = Button(window, text="Save", relief=RIDGE, borderwidth=3, width=8, 
                  font=('verdana', 10, 'bold'), cursor="hand2", command=saveFile)
 button5.place(x=110, y=280)
 
-button6 = Button(root, text="Copy", relief=RIDGE, borderwidth=3,
+button6 = Button(window, text="Copy", relief=RIDGE, borderwidth=3, width=8,
                  font=('verdana', 10, 'bold'), cursor="hand2", command=Copyt)
 button6.place(x=200, y=280)
 
-button7 = Button(root, text="Clear", relief=RIDGE, borderwidth=3,
+button7 = Button(window, text="Clear", relief=RIDGE, borderwidth=3, width=8,
                  font=('verdana', 10, 'bold'), cursor="hand2", command=Reset)
 button7.place(x=290, y=280)
 
 
 # Buttons of bottom line
-bhomt1 = Button(root, text="Home", relief=RIDGE, borderwidth=2,
-                font=('verdana', 10, 'bold'), cursor="hand2", command=clear)
-bhomt1.place(x=10, y=315)
 
 
-bt2a1 = Button(root, text="Translate", relief=RIDGE, borderwidth=2,
-               font=('verdana', 10, 'bold'), cursor="hand2", command=clear)
-bt2a1.place(x=110, y=315)
-
-bv2t1 = Button(root, text="Text To Voice", relief=RIDGE, borderwidth=2,
-               font=('verdana', 10, 'bold'), cursor="hand2", command=clear)
-bv2t1.place(x=235, y=315)
-
-babout1 = Button(root, text="About", relief=RIDGE, borderwidth=2,
+babout1 = Button(window, text="About", relief=RIDGE, borderwidth=2, bg="lightgreen", width=8,
                  font=('verdana', 10, 'bold'), cursor="hand2", command=aboutinfo)
-babout1.place(x=380, y=315)
+babout1.place(x=380, y=280)
 
-
-bexit1 = Button(root, text="Exit", relief=RIDGE, borderwidth=2,
+bexit1 = Button(window, text="Exit", relief=RIDGE, borderwidth=2, bg="red", width=5,
                 font=('verdana', 10, 'bold'), cursor="hand2", command=exit)
-bexit1.place(x=467, y=315)
-root.mainloop()
+bexit1.place(x=467, y=280)
+window.mainloop()

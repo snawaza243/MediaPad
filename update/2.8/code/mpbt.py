@@ -23,7 +23,7 @@ root.title('MediaPad | Translate')
 root.geometry('530x330')
 root.maxsize(530, 350)
 root.minsize(530, 350)
-root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
+root.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/icon.ico')
 
 
 # translate function for translate function

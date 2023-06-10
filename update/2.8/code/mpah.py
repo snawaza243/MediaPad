@@ -29,7 +29,7 @@ rootHome.title('MediaPad | Home')
 rootHome.geometry('530x350')
 rootHome.maxsize(530, 350)
 rootHome.minsize(530, 350)
-rootHome.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
+rootHome.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/icon.ico')
 
 frame = Frame(rootHome, width=530, height=350)
 frame.pack()
@@ -37,7 +37,7 @@ frame.place(anchor='center', relx=0.5, rely=0.5)
 
 # Create an object of tkinter ImageTk
 img = ImageTk.PhotoImage(Image.open(
-    "C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/bgs.png"))
+    "C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/bg.png"))
 # Create a Label Widget to display the text or Image
 HoveBgLabel = Label(frame, image=img)
 HoveBgLabel.pack()
@@ -76,7 +76,7 @@ def root2Fun():
     root2.geometry('530x330')
     root2.maxsize(530, 350)
     root2.minsize(530, 350)
-    root2.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/component/mpi.ico')
+    root2.iconbitmap(r'C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/icon.ico')
 
 
     
