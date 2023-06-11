@@ -21,8 +21,7 @@ click_btn= PhotoImage(file='b1.png')
 img_label= Label(image=click_btn)
 
 #Let us create a dummy button and pass the image
-button= Button(win, image=click_btn,command= my_command,
-borderwidth=0)
+button= Button(win, text="Hii",  image=click_btn,command= my_command, borderwidth=0)
 button.pack(pady=30)
 
 text= Label(win, text= "")

@@ -5,101 +5,61 @@
 # Affiliation :                                                #
 # Address     : MMDU, Mullana Ambala                           #
 # Date        : 16/06/2022                                     #
-# Version     : 3.0 11-6-23                                    #
+# app_version_current = "v3.0.11.6.23"                         #
 ################################################################
 
-#######################################################
-#                  MediaPad Home View                 #
-#######################################################
-
-import os
-import tkinter.messagebox
-from tkinter import messagebox
-from tkinter import filedialog,simpledialog
-from tkinter.scrolledtext import ScrolledText
 import tkinter as tk
-from tkinter import ttk
-from tkinter import *
-import pyttsx3
-from hyperlink import*
-import webbrowser
-from functools import partial
-import re
-from datetime import datetime
 from PIL import ImageTk, Image
-from PIL import ImageTk, Image  # pip install pillow
-from googletrans import Translator  # pip install googletrans==3.1.0a0
-
+import random
+import requests
+import pyttsx3
+import speech_recognition as sr
+import webbrowser
+import requests
+import json
+from tkinter.scrolledtext import ScrolledText
+from tkinter import filedialog, simpledialog, messagebox
+from datetime import datetime
+import datetime as dt
+from tkinter import ttk
+from googletrans import Translator
+from tkinter import Frame, StringVar, Label, Text, Button, OptionMenu, RIDGE
+from gtts import gTTS
+import os
 import datetime
 from playsound import playsound
-from cProfile import label
-import imp
-from PIL import ImageTk, Image  # pip install pillow for image
-from gtts import gTTS
-import pyttsx3
+from tkinter import filedialog, messagebox, PhotoImage,Menu
+from PIL import ImageTk, Image
+import threading
+import speech_recognition as sr
+import winsound
+from tktooltip import ToolTip
+
+
 engine = pyttsx3.init()
 
+# Default data and function
+app_version_current = "v3.0.11.6.23"
 
-import tkinter as tk
-import speech_recognition as sr
-import threading
-import os
-import tkinter.messagebox
-from tkinter import messagebox
-from tkinter import filedialog,simpledialog
-from tkinter.scrolledtext import ScrolledText
-import tkinter as tk
-from tkinter import ttk
-from tkinter import *
-from tktooltip import ToolTip
-import pyttsx3
-from hyperlink import*
-import webbrowser
-from functools import partial
-import re
-from datetime import datetime
-from PIL import ImageTk, Image
-from PIL import ImageTk, Image  # pip install pillow
-from googletrans import Translator  # pip install googletrans==3.1.0a0
-
-import datetime
-from playsound import playsound
-from cProfile import label
-import imp
-from PIL import ImageTk, Image  # pip install pillow for image
-from gtts import gTTS
-import pyttsx3
-
-import tkinter as tk
-import speech_recognition as sr
-import threading
-import winsound
-from tkinter import messagebox, Label, Button, filedialog, PhotoImage, font
-import requests
-import json
-
-from tktooltip import ToolTip
-import emoji
-import time
-
-import tkinter as tk
-import speech_recognition as sr
-import threading
-import winsound
-from tkinter import Frame, messagebox, Label, Button, filedialog, PhotoImage
-from tkinter import RIDGE
-import requests
-import json
-
-from PIL import ImageTk, Image  # pip install pillow for image
-from tktooltip import ToolTip
-import emoji
-import time
-import re
-    
 def about_info():
-        tk.messagebox.showinfo( "About", "Thank you for using Mediapad! We hope that our notepad, translator, voice to text, and text to    voice features are helping you be more productive and efficient.\n\n\nDid you know that Mediapad supports translation for multiple     languages, including English, Spanish, French, German, any languages? Give it a try and see how easy it is to communicate in    different languages.\n\nNeed to take a break from typing? Try out our voice to text feature and dictate your notes and messages    instead.\n\nWant to listen to your notes or messages instead of reading them? Our text to voice feature can convert your written   text into spoken words, making it easier for you to absorb information.\n\nHave a question or feedback for us? Feel free to reach     out to us at snawaza243@gmail.com and we'll be happy to assist you.")
-
+    hyperlink = "www.codesam.in"
+    greed = "Thank you for using Mediapad!"
+    app_info1 = "We hope that our notepad, translator, voice to text, and text to voice features are helping you be more productive and efficient. "
+    app_info2 = "Did you know that Mediapad supports translation for multiple languages, including English, Spanish, French, German, any languages?Give it a try and see how easy it is to communicate in different languages. "
+    app_info3 = "Need to take a break from typing? Try out our voice to text feature and dictate your notes and messages instead. "
+    app_info4 = "Want to listen to your notes or messages instead of reading them? Our text to voice feature can convert your written   text into spoken words, making it easier for you to absorb information. "
+    app_info5 = "Have a question or feedback for us? Feel free to reach out to us at snawaza243@gmail.com and we'll be happy to assist you. "
+    about_dev1 = "About Developer:\nShahnawaz Alam is a software developer. He holds a degree in computer science from MM Deemed to be University Mullana, and has worked for several large projects in the past. "
+    about_dev2 = "As the lead developer on this project, Shahnawaz was responsible for designing and implementing the software from scratch. \n\nIf you have any questions or feedback about the software, you can contact Shahnawaz at snawaza243@email.com. "
+    about_dev3 = "In addition to this project, Shahnawaz has also worked on several other software projects, including web application."
+    about_dev4 = "\n\nCheck our blog: www.indiantechnoera.in\n"
+    app_info_merge = greed + app_info1 + "\n\n" + app_info2 + "\n\n" + app_info3 + "\n\n" + app_info4 + "\n\n"+app_info5 + "\n\n\n"
+    dev_info_merge = about_dev1 +  about_dev2 + about_dev3 + about_dev4 + "\n\n\nDo you want to visit us?"
+    message =  app_info_merge + dev_info_merge
+    response = messagebox.askyesno("Info", message) 
+    if response == True:
+        webbrowser.open_new(hyperlink)
+        
 def exit_root():
     root.destroy();
 
@@ -114,7 +74,8 @@ def get_random_dev_joke():
             joke = data["joke"]
         else:
             joke = f"{data['setup']} {data['delivery']}"
-        messagebox.showinfo("Random Developer Joke", joke)
+            print("Not get query you are")
+        messagebox.showinfo("MediaPad | Developers Quote of the Day", joke)
 
 
 start_color = "#32CD32"
@@ -130,7 +91,7 @@ reset_color = "#95a5a6"
 about_color = "#9b59b6"
 exit_color = "#e74c3c"
 
-# Notepad
+# MediaPad | Notepad
 def mp_notepad(title):
     window = tk.Toplevel(root)
     window.title(title)
@@ -140,7 +101,6 @@ def mp_notepad(title):
     #the window widget
     window.resizable(0, 0) # disable the expand  
     
-
     #creating scrollable notepad window
     notepad = ScrolledText(window, width = 90, height = 40)
     fileName = ' '
@@ -153,7 +113,7 @@ def mp_notepad(title):
                 cmdSave()
             else:
                 notepad.delete(0.0, END)
-        window.title("Notepad")
+        window.title(title)
 
     def cmdOpen():     #file menu Open option
         fd = filedialog.askopenfile(parent = window, mode = 'r')
@@ -227,7 +187,7 @@ def mp_notepad(title):
 
     #file menu
     fileMenu = Menu(notepadMenu, tearoff = False)
-    notepadMenu.add_cascade(label='File', menu = fileMenu)
+    notepadMenu.add_cascade(label='File', menu = fileMenu, )
 
     #adding options in file menu
     fileMenu.add_command(label='New', command = cmdNew)
@@ -312,43 +272,53 @@ def mp_translator(title):
             clicked_text.config(text= "Text translating")
             clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
-
-    # clear function for button
-    def clear():
-        t1.delete(1.0, 'end')
-        t2.delete(1.0, 'end')
-        clicked_text.config(text= "Text clean")
-        clicked_text.after(3000, lambda: clicked_text.config(text=""))
-
-    def copy_trans():
-        # t1.get(1.0, 'end')
-        # t2.delete(1.0, 'end')
-        # clicked_text.config(text= "Text clean")
-        # clicked_text.after(3000, lambda: clicked_text.config(text=""))
-
+    # copy function for select option
+    def copy_trans(t1, clicked_text):
         clicked_text.config(text= "Text copied")
         clicked_text.after(2000, lambda: clicked_text.config(text=""))
         text = t1.get("1.0", tk.END)
         window.clipboard_clear()
         window.clipboard_append(text)
+        
+    # clear function for select option
+    def clear_trans(t1, clicked_text):
+        t1.delete(1.0, 'end')
+        # t2.delete(1.0, 'end')
+        clicked_text.config(text= "Text clean")
+        clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
+    def save_trans(t1, t2, clicked_text):
+        fd = filedialog.asksaveasfile(mode='wb', defaultextension='.txt')
+        if fd is not None:
+            input_text = t1.get("1.0", tk.END)
+            output_text = t2.get("1.0", tk.END)
+            saving_data = "Input Data:\n" + input_text + "\n\nOutput Translated Data:\n" + output_text + "\n\n\n\n\n\n\nDear User,\nThank you for using MediaPad and we appreciate your continued support!\n\nBest regards,\nMediaPad!\n\nwww.indiantechnoera.in\nwww.codesam.in"
+
+            try:
+                fd.write(saving_data.encode('utf-8'))
+                clicked_text.config(text="Translation saved to the file.")
+            except Exception as e:
+                messagebox.showerror(title="Error", message="Not able to save file!\n" + str(e))
+                clicked_text.config(text="Not saved")
+
+
+        clicked_text.after(4000, lambda: clicked_text.config(text=""))
     # exit function for button
     def exit():
         window.destroy()
 
     # Auto-detect language variable input & GUI
     a = tk.StringVar()
-    auto_detect = ttk.Combobox(
-        window, width=20, textvariable=a, state='readonly', font=('Century Gothic', 10, 'bold'),)
+    auto_detect = ttk.Combobox(window, width=28, textvariable=a, state='readonly', font=('Century Gothic', 10, 'bold'),)
 
-    auto_detect['values'] = ('Auto-Detect Language',)
-    auto_detect.place(x=30, y=70)
+    auto_detect['values'] = ('Input : Auto-Detect Language',)
+    auto_detect.place(x=22, y=70)
     auto_detect.current(0)
 
     # Choose destination language & GUI
     l = tk.StringVar()
     choose_language = ttk.Combobox(
-        window, width=20, textvariable=l, state='readonly', font=('Century Gothic', 10, 'bold'))
+        window, width=28, textvariable=l, state='readonly', font=('Century Gothic', 10, 'bold'))
 
     choose_language['values'] = (
         'Afrikaans',
@@ -459,7 +429,8 @@ def mp_translator(title):
         'Yoruba',
         'Zulu',
     )
-    choose_language.place(x=290, y=70)
+    
+    choose_language.place(x=280, y=70)
     choose_language.current(35)
 
     # t1 for window text area
@@ -471,8 +442,6 @@ def mp_translator(title):
     t2.place(x=260, y=100)
 
 
-
-
     title_t_ = Label(window, bg='white', text="Translate Now", font=("Century Gothic", 22, "bold"))
     title_t_.place(x=160, y=15)
 
@@ -480,30 +449,73 @@ def mp_translator(title):
     trans_btn = Button(window, text="Translate", width=8, bg=play_color, borderwidth=2, font=( 'Century Gothic', 10, ), cursor="hand2", command=translate)
     trans_btn.place(x=10, y=280)
 
+
+    def on_copy_select(*args):
+        copy = copy_var.get()
+        
+        if copy == 'Copy Input':
+            copy_trans(t1, clicked_text)
+        elif copy == 'Copy Output':
+            copy_trans(t2, clicked_text)
+        elif copy == 'Copy All':
+            a = t1.get("1.0", tk.END)
+            b = t2.get("1.0", tk.END)
+            all_data = a+b
+            window.clipboard_clear()
+            window.clipboard_append(all_data)
+            clicked_text.config(text= "Text copied")
+            clicked_text.after(2000, lambda: clicked_text.config(text=""))
+
+    def on_clear_select(*args):
+        clear = clear_var.get()
+        if clear == 'Clear Input':
+            clear_trans(t1, clicked_text)
+        elif clear == 'Clear Output':
+            clear_trans(t2, clicked_text)
+        elif clear == 'Clear All':
+            t1.delete("1.0", tk.END)
+            t2.delete("1.0", tk.END)
+            clicked_text.config(text= "All text clear")
+            clicked_text.after(2000, lambda: clicked_text.config(text=""))
+            
+
+
+    copy_var = tk.StringVar()
+    copy_var.set('Copy Now')  
+    copy_var.trace('w', on_copy_select) 
+    copy_var.set('Copy') 
     
 
+    clear_var = tk.StringVar()
+    clear_var.set('Clear Now')  
+    
+    clear_var.trace('w', on_clear_select)  
+    clear_var.set('Clear')  
 
-    clear_btn = Button(window, text="Copy", width=8, bg=copy_color, borderwidth=2, font=( 'Century Gothic', 10, ), cursor="hand2", command=copy_trans)
-    clear_btn.place(x=115, y=280)
-
-    copy_btn = Button(window, text="Clear ", width=8,bg=clear_color, borderwidth=2, font=( 'Century Gothic', 10, ),  cursor="hand2", command=clear)
-    copy_btn.place(x=220, y=280)
-
+    copy_choose_t = tk.OptionMenu(window, copy_var, 'Copy Input', 'Copy Output', 'Copy All')
+    copy_choose_t.config(width=12, bg=copy_color, borderwidth=2, font=( 'Century Gothic', 10, ), cursor="hand2",)
+    copy_choose_t.place(x=97, y=280)
+    
+    clear_choose_t = tk.OptionMenu(window, clear_var, 'Clear Input', 'Clear Output', 'Clear All')
+    clear_choose_t.config(width=12,bg=clear_color, borderwidth=2, font=( 'Century Gothic', 10, ),  cursor="hand2",)
+    clear_choose_t.place(x=236, y=280)
+    
+    save_btn = Button(window, text="Save All", width=16,bg=save_color, borderwidth=2, font=( 'Century Gothic', 10, ),  cursor="hand2", command=lambda:save_trans(t1,t2, clicked_text))
+    save_btn.place(x=379, y=282)
+    
+    
+    
 
     # current action notification
-    clicked_text = Label(window, text="",  anchor="w",  borderwidth=4, width="42", font=('Century Gothic', 10,), cursor="hand2")
+    clicked_text = Label(window, text="",  anchor="w",  borderwidth=4, width=43, font=('Century Gothic', 10,), cursor="hand2")
     clicked_text.place(x=10, y=315)
 
-
-    about_btn = Button(window, text="About", relief=RIDGE,  bg=about_color, borderwidth=2, width=8, font=('Century Gothic', 10,), cursor="hand2", command=about_info)
+    about_btn = Button(window, text="About", relief=RIDGE,  bg=about_color, borderwidth=2, width=7, font=('Century Gothic', 10,), cursor="hand2", command=about_info)
     about_btn.place(x=380, y=315)
 
-    exit_btn = Button(window, text="Exit", relief=RIDGE,  borderwidth=2, bg="red", width=5, font=('Century Gothic', 10,), cursor="hand2", command=exit)
-    exit_btn.place(x=467, y=315)
+    exit_btn = Button(window, text="Close", relief=RIDGE,  borderwidth=2, bg="red", width=6, font=('Century Gothic', 10,), cursor="hand2", command=exit)
+    exit_btn.place(x=458, y=315)
 
-
-    
-    
     window.mainloop()
     
 # Text to voice
@@ -597,7 +609,7 @@ def mp_text2voice(title):
             speech = gTTS(text=Message)
 
             basename = "file"
-            suffix = datetime.datetime.now().strftime("%y%m%d_%H%M")
+            suffix = dt.datetime.now().strftime("%y%m%d_%H%M")
             filename = "_".join([basename, suffix])
 
             fileName = "cache"+filename+'.mp3'
@@ -605,10 +617,10 @@ def mp_text2voice(title):
             if os.path.exists(fileName):
                 os.remove(fileName)
             speech.save(fileName)
-            print("Speak Hindi - Female:\n"+ fileName +  text)
+            print("Speak Hindi - Female:\n"+ fileName +"\n" + text)
+            clicked_text.config(text= "Playing: "+gender)
             playsound(fileName)
             os.remove(fileName)
-            clicked_text.config(text= "Playing: "+gender)
             # clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
         elif gender == 'Hindi - Male Hera':
@@ -685,7 +697,6 @@ def mp_text2voice(title):
             clicked_text.config(text= "Saved in "+gender + " as " + filename)
 
         elif gender =='Hindi - Male Hera':
-
             engine = pyttsx3.init()
             engine.setProperty("rate", 130)
             engine.setProperty('voice', 'Hi')
@@ -730,7 +741,7 @@ def mp_text2voice(title):
     gender_var.set('Select Language')  # Set the default value of the dropdown to Male
     gender_var.trace('w', on_gender_select)  # Call on_gender_select when the dropdown value changes
 
-    gender_menu = tk.OptionMenu(window, gender_var, 'Select Language', 'English - Male', 'English - Female', 'Hindi - Female', 'Hindi - Female Tara', 'Hindi - Male Heera')
+    gender_menu = tk.OptionMenu(window, gender_var,  'English - Male', 'English - Female', 'Hindi - Female', 'Hindi - Female Tara', 'Hindi - Male Heera')
     gender_menu.config( width=18, bg=drop_color, cursor="hand2", )
     ToolTip(gender_menu, msg="Choose Language/Gender")
     gender_menu.place(x=205, y=280)
@@ -740,7 +751,7 @@ def mp_text2voice(title):
     stop_btn = Button(window, text="Stop", bg=stop_color, width=8, font=('Century Gothic', 10,), cursor="hand2",    command=on_stop_button_click)
     stop_btn.place(x=370, y=280)
 
-    reset_btn = Button(window, text="Reset",  bg=reset_color, width=6, font=('Century Gothic', 10,), cursor="hand2", command=clear)
+    reset_btn = Button(window, text="Clear",  bg=clear_color, width=6, font=('Century Gothic', 10,), cursor="hand2", command=clear)
     reset_btn.place(x=460, y=280)
 
     # current action notification
@@ -751,7 +762,7 @@ def mp_text2voice(title):
     about_btn = Button(window, text="About", relief=RIDGE, bg=about_color, borderwidth=2, width=8, font=('Century Gothic', 10,),    cursor="hand2", command=about_info)
     about_btn.place(x=370, y=315)
 
-    exit_btn = Button(window, text="Exit", relief=RIDGE, bg='red', width=6, font=('Century Gothic', 10,), cursor="hand2", command=exit)
+    exit_btn = Button(window, text="Close", relief=RIDGE, bg='red', width=6, font=('Century Gothic', 10,), cursor="hand2", command=exit)
     exit_btn.place(x=460, y=315)
     window.mainloop()
 
@@ -835,10 +846,16 @@ def mp_voice2text(title):
         file_name = filedialog.asksaveasfilename(defaultextension=".txt")
         # Save the text to the chosen file
         if file_name:
-            with open(file_name, "w") as f:
-                f.write(text)
-        clicked_text.config(text= "Text saved")
-        clicked_text.after(2000, lambda: clicked_text.config(text=""))
+            try:
+                with open(file_name, "wb") as f:
+                    f.write(text.encode('utf-8'))
+                    clicked_text.config(text="Data saved to the file.")
+            except Exception as e:
+                messagebox.showerror(title="Error", message="Not able to save file!\n" + str(e))
+                clicked_text.config(text="Not saved")
+                
+
+
 
     
     def show_about():
@@ -859,22 +876,21 @@ def mp_voice2text(title):
     title_v2t = Label(window, text="Voice to Text",highlightthickness=0, highlightbackground="white", bg='white' ,font=("Century Gothic", 22, "bold"))
     title_v2t.place(x=160, y=15) 
 
-
+    # start button with fun
     record_btn = Button(window, text="Start", bg=start_color,  width=8, font=('Century Gothic', 10,), cursor="hand2", command=start_record)
     record_btn.place(x=10, y=280)
-
-
-    # save button with fun
-
-    save_btn = Button(window, text="Save", bg=save_color,   width=8, font=('Century Gothic', 10,), cursor="hand2", command=save_text)
-    save_btn.place(x=105, y=280)
     
     stop_btn = Button(window, text="Stop", bg=stop_color,  width=8, font=('Century Gothic', 10,), cursor="hand2", command=stop_record)
-    stop_btn.place(x=200, y=280)
-
+    stop_btn.place(x=105, y=280)
+    
     # copy button with fun
     copy_btn = Button(window, text="Copy", bg=copy_color,   width=8, font=('Century Gothic', 10,), cursor="hand2", command=copy_text)
-    copy_btn.place(x=290, y=280)
+    copy_btn.place(x=200, y=280)
+    
+    
+    # save button with fun
+    save_btn = Button(window, text="Save", bg=save_color,   width=8, font=('Century Gothic', 10,), cursor="hand2", command=save_text)
+    save_btn.place(x=290, y=280)
 
     # clean button with fun
     clear_btn = Button(window, text="Clear", bg=clear_color,  width=16, font=('Century Gothic', 10,), cursor="hand2", command=clear_text)
@@ -883,15 +899,15 @@ def mp_voice2text(title):
 
 
     # current action notification
-    clicked_text = Label(window, text="",  anchor="w",  borderwidth=4, width="42", font=('Century Gothic', 10,), cursor="hand2")
+    clicked_text = Label(window, text="",  anchor="w",  borderwidth=4, width="43", font=('Century Gothic', 10,), cursor="hand2")
     clicked_text.place(x=10, y=315)
 
 
     about_btn = Button(window, text="About", relief=RIDGE,   borderwidth=2, bg=about_color, width=8, font=('Century Gothic', 10,), cursor="hand2", command=about_info)
     about_btn.place(x=380, y=315)
 
-    exit_btn = Button(window, text="Exit", relief=RIDGE,  borderwidth=2, bg="red", width=5, font=('Century Gothic', 10,), cursor="hand2", command=exit)
-    exit_btn.place(x=467, y=315)
+    exit_btn = Button(window, text="Close", relief=RIDGE,  borderwidth=2, bg="red", width=5, font=('Century Gothic', 10,), cursor="hand2", command=exit_app)
+    exit_btn.place(x=466, y=315)
 
     # Start the GUI event loop
     window.mainloop()
@@ -930,55 +946,88 @@ projectTitle1 = "MediaPad | Translator"
 projectTitle2 = "MediaPad | Text to Voice"
 projectTitle3 = "MediaPad | Voice to Text"
 
-color0High = "#0011cc"
-color0Low = "#0011aa"
-color1High = "#990099"
-color1Low = "#990044"
-color2High = "#0099aa"
-color2Low = "#006688"
-color3High = "#88bb22"
-color3Low = "#88bb66"
+# color0High = "#0011cc"
+# color0Low = "#0011aa"
+# color1High = "#990099"
+# color1Low = "#990044"
+# color2High = "#0099aa"
+# color2Low = "#006688"
+# color3High = "#88bb22"
+# color3Low = "#88bb66"
+
+
+color0High = "#009688"
+color0Low = "#00796B"
+color1High = "#FF5722"
+color1Low = "#E64A19"
+color2High = "#2196F3"
+color2Low = "#1976D2"
+color3High = "#B0BEC5"
+color3Low = "#808080"
 
 # random developer joke
-click_btn= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/smile.png')
+click_btn= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/quote.png')
 #Let us create a label for button event
 img_label= Label(image=click_btn)
 #Let us create a dummy button and pass the image
 joke_btn= Button(root, image=click_btn, borderwidth=0, cursor="hand2", bg='white', command=get_random_dev_joke)
-ToolTip(joke_btn, msg="See Today Developer Joke")
-joke_btn.place(x=115, y=352)
+ToolTip(joke_btn, msg="Todays Developer Quote")
+joke_btn.place(x=147, y=5)
 
-mp_nm_btn = Button(root, text="Notepad", width=34, height=2, command=lambda: mp_notepad(projectTitle0), relief=RIDGE, borderwidth=3, font=('verdana', 11, 'bold'), cursor="hand2",bg=color0High, fg="white", activebackground=color0Low, activeforeground="white")
-button1 = Button(root, text="Translator", width=34, height=2, command=lambda: mp_translator(projectTitle1), relief=RIDGE, borderwidth=3, font=('verdana', 11, 'bold'), cursor="hand2",bg=color1High, fg="white", activebackground=color1Low, activeforeground="white")
-button2 = Button(root, text="Text-to-Voice",width=34, height=2, command=lambda: mp_text2voice(projectTitle2), relief=RIDGE, borderwidth=3, font=('verdana', 11, 'bold'), cursor="hand2",bg=color2High, fg="white", activebackground=color2Low, activeforeground="white")
-button3 = Button(root, text="Voice-to-text", width=34, height=2, command=lambda: mp_voice2text(projectTitle3), relief=RIDGE, borderwidth=3, font=('verdana', 11, 'bold'), cursor="hand2",bg=color3High, fg="white", activebackground=color3Low, activeforeground="white")
+
+mp_face_them_1= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/mp-face-1.png')
+mp_face_them_11= Label(image=mp_face_them_1, bg='white', padx=10)
+mp_face_them_11.place(x=35+20, y=110+5)
+
+mp_face_them_2= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/mp-face-2.png')
+mp_face_them_22= Label(image=mp_face_them_2, bg='white', padx=10)
+mp_face_them_22.place(x=35+20, y=170+5)
+
+mp_face_them_3= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/mp-face-3.png')
+mp_face_them_33= Label(image=mp_face_them_3, bg='white', padx=10)
+mp_face_them_33.place(x=35+20, y=230+5)
+
+mp_face_them_4= PhotoImage(file='C:/Users/snawa/OneDrive/Documents/GitHub/MediaPad/app/mp-face-4.png')
+mp_face_them_44= Label(image=mp_face_them_4, bg='white', padx=10)
+mp_face_them_44.place(x=35+20, y=290+5)
+
+
+
+
+
+
+mp_nm_btn = Button(root, text="Notepad",       width=34, height=2, command=lambda: mp_notepad(projectTitle0),      font=('Century Gothic', 12, 'bold'), cursor="hand2", borderwidth=2, bg=color0High, fg="white", activebackground=color0Low, activeforeground="white", )
+mp_tr_btn = Button(root, text="Translator",    width=34, height=2, command=lambda: mp_translator(projectTitle1),   font=('Century Gothic', 12, 'bold'), cursor="hand2", borderwidth=2, bg=color1High, fg="white", activebackground=color1Low, activeforeground="white", )
+mp_ttv_btn = Button(root, text="Text 2 Voice", width=34, height=2, command=lambda: mp_text2voice(projectTitle2),   font=('Century Gothic', 12, 'bold'), cursor="hand2", borderwidth=2, bg=color2High, fg="white", activebackground=color2Low, activeforeground="white", )
+mp_vtt_btn = Button(root, text="Voice 2 text", width=34, height=2, command=lambda: mp_voice2text(projectTitle3),   font=('Century Gothic', 12, 'bold'), cursor="hand2", borderwidth=2, bg=color3High, fg="white", activebackground=color3Low, activeforeground="white", )
 
 mp_nm_btn.bind("<Enter>", lambda e: mp_nm_btn.config(bg=color0Low))
 mp_nm_btn.bind("<Leave>", lambda e: mp_nm_btn.config(bg=color0High))
-button1.bind("<Enter>", lambda e: button1.config(bg=color1Low))
-button1.bind("<Leave>", lambda e: button1.config(bg=color1High))
-button2.bind("<Enter>", lambda e: button2.config(bg=color2Low))
-button2.bind("<Leave>", lambda e: button2.config(bg=color2High))
-button3.bind("<Enter>", lambda e: button3.config(bg=color3Low))
-button3.bind("<Leave>", lambda e: button3.config(bg=color3High))
-
+mp_tr_btn.bind("<Enter>", lambda e: mp_tr_btn.config(bg=color1Low))
+mp_tr_btn.bind("<Leave>", lambda e: mp_tr_btn.config(bg=color1High))
+mp_ttv_btn.bind("<Enter>", lambda e: mp_ttv_btn.config(bg=color2Low))
+mp_ttv_btn.bind("<Leave>", lambda e: mp_ttv_btn.config(bg=color2High))
+mp_vtt_btn.bind("<Enter>", lambda e: mp_vtt_btn.config(bg=color3Low))
+mp_vtt_btn.bind("<Leave>", lambda e: mp_vtt_btn.config(bg=color3High))
 
 mp_nm_btn.place(x=115, y=100 + 10)
-button1.place(x=115, y=160 + 10)
-button2.place(x=115, y=220 + 10)
-button3.place(x=115, y=280 + 10)
+mp_tr_btn.place(x=115, y=160 + 10)
+mp_ttv_btn.place(x=115, y=220 + 10)
+mp_vtt_btn.place(x=115, y=280 + 10)
 
-bAbout = Button(root, text="About", relief=RIDGE,   borderwidth=2, bg=about_color, width=8, font=('Century Gothic', 10,), cursor="hand2", command=about_info)
-bAbout.place(anchor='center', x=365, y=375)
 
-buttonexitM = Button(root, text="Exit", relief=RIDGE,  borderwidth=2, bg="red", width=5, font=('Century Gothic', 10,), cursor="hand2", command=exit)
-buttonexitM.place(anchor='center', x=442, y=375)
 
-# about_btn = Button(window, text="About", relief=RIDGE,   borderwidth=2, bg=about_color, width=8, font=('Century Gothic', 10,), cursor="hand2", command=show_about)
-# about_btn.place(x=380, y=315)
 
-# exit_btn = Button(window, text="Exit", relief=RIDGE,  borderwidth=2, bg="red", width=5, font=('Century Gothic', 10,), cursor="hand2", command=exit)
-# exit_btn.place(x=467, y=315)
+version_date = Label(root,  text=app_version_current, font=( "Century Gothic", 10, ), bg='white')
+version_date.place(x=55, y=370)
+
+
+about_btn = Button(root, text="About", relief=RIDGE,   borderwidth=2, bg=about_color, width=8, font=('Century Gothic', 10,), cursor="hand2", command=about_info)
+about_btn.place(anchor='center', x=392, y=375)
+
+exit_btn = Button(root, text="Exit", relief=RIDGE,  borderwidth=2, bg="red", width=7, font=('Century Gothic', 10,), cursor="hand2", command=exit)
+exit_btn.place(anchor='center', x=478, y=375)
+
 
 
 root.mainloop()
