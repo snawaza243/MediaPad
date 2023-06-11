@@ -43,12 +43,12 @@ MediaPad was developed using a range of Python libraries, including:
 - **gTTS:** The Google Text-to-Speech library used to generate artificial voices.
 - **pydub:** The library used to manipulate audio files.
 - **tkinter, PIL (Python Imaging Library), requests:** A set of Python libraries for creating graphical user interfaces, working with images, and sending HTTP requests.
-- **pyttsx3, speech_recognition: **A set of Python libraries for text-to-speech conversion and speech recognition.
-- **webbrowser, json: **A set of Python libraries for opening web browsers and working with JSON data.
-- **tkinter.scrolledtext, filedialog, simpledialog, messagebox, ttk: **A set of Python libraries for creating and working with GUI widgets in tkinter.
-- **googletrans, gtts: **A set of Python libraries for text translation and text-to-speech conversion using Google services.
-- **os, datetime: **A set of Python libraries for working with the operating system and dates/times.
-- **playsound, threading, winsound: **A set of Python libraries for playing sound files and working with threads.
+- **pyttsx3, speech_recognition:** A set of Python libraries for text-to-speech conversion and speech recognition.
+- **webbrowser, json:** A set of Python libraries for opening web browsers and working with JSON data.
+- **tkinter.scrolledtext, filedialog, simpledialog, messagebox, ttk:** A set of Python libraries for creating and working with GUI widgets in tkinter.
+- **googletrans, gtts:** A set of Python libraries for text translation and text-to-speech conversion using Google services.
+- **os, datetime:** A set of Python libraries for working with the operating system and dates/times.
+- **playsound, threading, winsound:** A set of Python libraries for playing sound files and working with threads.
 - **tktooltip:** A Python library for creating tooltips in tkinter.
 
 ## Getting Started
