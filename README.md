@@ -5,6 +5,7 @@ MediaPad is a Python-based desktop application that aims to provide a comprehens
 <p align="center">
   <img src="https://github.com/snawaza243/MediaPad/blob/main/component/view/Home.png" width="60%" height="auto" />
 </p>
+
 ## Features
 
 The MediaPad application comes with a range of features that can be used in multimedia transcription, language conversion, and voice generation. These include:
@@ -50,62 +51,62 @@ To use MediaPad, users need to download the application and install the necessar
 
 MediaPad was developed by Shahnawaz Alam (11202722) under the guidance of Rajeev Gupta Sir at MMDU, Mullana Ambala. 
 
-### Version History
+## Version History
 
 The current version of MediaPad is 3.0, released on June 11, 2023.
 
 Sure, here's an updated version of the versioning documentation with the versions listed from top to bottom (most recent first):
 
-## Version 3.0 (June 2023)
+### Version 3.0 (June 2023)
 - Final release of the project with all major features and bug fixes.
 - Improved user experience and performance.
 - Date: June 11, 2023.
 
-## Version 2.1 (September 2022)
+### Version 2.1 (September 2022)
 - Fixed bugs related to the new text summarization feature.
 - Improved the accuracy of sentiment analysis.
 - Date: September 15, 2022.
 
-## Version 2.0 (August 2022)
+### Version 2.0 (August 2022)
 - Major update with new features including text summarization and sentiment analysis.
 - Improved user interface with new tabs and options.
 - Date: August 1, 2022.
 
-## Version 1.2 (June 2022)
+### Version 1.2 (June 2022)
 - Improved the text-to-speech feature with new voices and accents.
 - Fixed minor bugs related to the notepad feature.
 - Date: June 15, 2022.
 
-## Version 1.1 (April 2022)
+### Version 1.1 (April 2022)
 - Added support for additional languages in the text translation feature.
 - Fixed bugs related to text-to-speech and speech-to-text functionality.
 - Improved user interface with new language options and error messages.
 - Date: April 1, 2022.
 
-## Version 1.0 (February 2022)
+### Version 1.0 (February 2022)
 - First stable release of the project with all four major features.
 - Fixed minor bugs and improved user experience.
 - Date: February 10, 2022.
 
-## Version 0.4 (January 2022)
+### Version 0.4 (January 2022)
 - Added a notepad feature for users to save and edit text.
 - Improved user interface with a new tab for the notepad feature.
 - Tested and verified notepad functionality.
 - Date: January 15, 2022.
 
-## Version 0.3 (December 2021)
+### Version 0.3 (December 2021)
 - Added the ability to transcribe speech to text using the Google Cloud Speech-to-Text API.
 - Improved user interface with new buttons and options.
 - Tested and verified speech-to-text functionality.
 - Date: December 20, 2021.
 
-## Version 0.2 (November 2021)
+### Version 0.2 (November 2021)
 - Added the ability to convert text to speech using the Google Text-to-Speech API.
 - Improved user interface with new buttons and options.
 - Tested and verified text-to-speech functionality.
 - Date: November 15, 2021.
 
-## Version 0.1 (October 2021)
+### Version 0.1 (October 2021)
 - Added the ability to translate text from any language into another.
 - Basic user interface with text input and output fields.
 - Tested and verified basic functionality.
