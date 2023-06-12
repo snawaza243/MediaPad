@@ -10,10 +10,6 @@ MediaPad is a Python-based desktop application that aims to provide a comprehens
 
 The MediaPad application comes with a range of features that can be used in multimedia transcription, language conversion, and voice generation. These include:
 
-### Multimedia Transcription
-
-MediaPad can transcribe audio and video files, making it easy to create written transcripts of multimedia content. This feature is vital for people who deal with multimedia content and need to convert it into text for various purposes like subtitles, captions, and more.
-
 ### Language Conversion
 
 MediaPad provides an easy-to-use language converter that can translate text from any language into any other language. The application uses machine learning algorithms to provide accurate translations, making it an ideal tool for people who deal with content in multiple languages.
