@@ -4,7 +4,7 @@
 # Coordinator : Rajeev Gupta Sir                               #
 # Affiliation :                                                #
 # Address     : MMDU, Mullana Ambala                           #
-# Date        : 16/06/2022                                     #
+# Date        : 16/06/2022 stable                                    #
 # app_version_current = "v3.0.11.6.23"                         #
 ################################################################
 

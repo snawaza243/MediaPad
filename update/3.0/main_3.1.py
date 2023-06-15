@@ -589,24 +589,42 @@ def mp_text2voice(title):
     def on_gender_select(*args):
         # Update the selected gender variable when the dropdown menu changes
         gender = gender_var.get()
-        clicked_text.config(text= "You choose: "+gender)
+        clicked_text.config(text= "You choose: "+gender, fg="black")
         # clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
     def on_speak_button_click():
         gender = gender_var.get()
-        if gender == 'English - Male':
-            # speak_male()
+        
+        text = t1.get("1.0", tk.END).strip()
+        if not text:
+            clicked_text.config(text="Please enter some text", fg="red")
+            clicked_text.after(3000, lambda: clicked_text.config(text=""))
+            
+            return
+            
+        elif gender == 'Select Language':
+            clicked_text.config(text="Choose language", fg="red")
+            clicked_text.after(3000, lambda: clicked_text.config(text=""))
+            return
+            
+        elif gender == 'English-Male':
             engine = pyttsx3.init()
             engine.setProperty("rate", 130)
             engine.setProperty('voice', 'english+m3')
-            text = t1.get("1.0", tk.END)
+
+            text = t1.get("1.0", tk.END).strip()
+            if not text:
+                clicked_text.config(text="Please enter some text", fg="red")
+                clicked_text.after(3000, lambda: clicked_text.config(text=""))
+                return
+            
             engine.say(text)
             print("Speak English - Male:\n"+ text)
             engine.runAndWait()
-            clicked_text.config(text= "Playing: "+gender)
+            clicked_text.config(text= "Playing: "+gender, fg='black')
             # clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
-        elif gender == 'English - Female':
+        elif gender == 'English-Female':
             # speak_male()
             engine = pyttsx3.init()
             engine.setProperty('rate', 125)
@@ -616,17 +634,28 @@ def mp_text2voice(title):
             voices = engine.getProperty('voices')
             engine.setProperty('voice', voices[1].id)
 
-            text = t1.get("1.0", tk.END)
+            text = t1.get("1.0", tk.END).strip()
+            if not text:
+                clicked_text.config(text="Please enter some text", fg="red")
+                clicked_text.after(3000, lambda: clicked_text.config(text=""))
+                
+                return
+            
             engine.say(text)
             print("Speak English - Female:\n"+ text)
             engine.runAndWait()
             engine.stop()
-            clicked_text.config(text= "Playing: "+gender)
+            clicked_text.config(text= "Playing: "+gender, fg='black')
             # clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
-        elif gender == 'Hindi - Female':
+        elif gender == 'Hindi-Female':
 
-            text = t1.get("1.0", tk.END)
+            text = t1.get("1.0", tk.END).strip()
+            if not text:
+                clicked_text.config(text="Please enter some text", fg="red")
+                clicked_text.after(3000, lambda: clicked_text.config(text=""))
+                
+                return
             Message = text
             speech = gTTS(text=Message)
 
@@ -640,112 +669,89 @@ def mp_text2voice(title):
                 os.remove(fileName)
             speech.save(fileName)
             print("Speak Hindi - Female:\n"+ fileName +"\n" + text)
-            clicked_text.config(text= "Playing: "+gender)
+            clicked_text.config(text= "Playing: "+gender, fg='black')
             playsound(fileName)
             os.remove(fileName)
             # clicked_text.after(3000, lambda: clicked_text.config(text=""))
 
-        elif gender == 'Hindi - Male Hera':
-            # speak_hi_female()
-            engine = pyttsx3.init()
-            engine.setProperty('voice', 'Hi')
-            text = t1.get("1.0", tk.END)
-            print("Speak Hindi - Male Hera:\n"+ text)
-            engine.say(text)
-            engine.runAndWait()
-            engine.stop()
-            clicked_text.config(text= "Playing: "+gender)
-            # clicked_text.after(3000, lambda: clicked_text.config(text=""))
-
-        elif gender == 'Hindi - Female Tara':
-            # speak_hi_female()
-            engine = pyttsx3.init()
-            engine.setProperty('voice', 'Hindi')
-            text = t1.get("1.0", tk.END)
-            print("Speak Hindi - Female Hera:\n"+ text)
-            engine.say(text)
-            engine.runAndWait()
-            engine.stop()
-            clicked_text.config(text= "Playing: "+gender)
-            # clicked_text.after(3000, lambda: clicked_text.config(text=""))
-
     def on_save_button_click():
-        # Call the corresponding function based on the selected gender and speak the voice
-
         gender = gender_var.get()
-
-        if gender == 'English - Male':
+        
+        text = t1.get("1.0", tk.END).strip()
+        if not text:
+            clicked_text.config(text="Please enter some text", fg="red")
+            clicked_text.after(3000, lambda: clicked_text.config(text=""))
+            
+            return
+            
+        if gender == 'Select Language':
+            clicked_text.config(text="Choose language", fg="red")
+            clicked_text.after(3000, lambda: clicked_text.config(text=""))
+            return
+            
+        elif gender == 'English-Male':
             engine = pyttsx3.init()
             engine.setProperty("rate", 130)
             engine.setProperty('voice', 'english+m3')
 
-            text = t1.get("1.0", tk.END)        
-            basename = "mp_ttv_e_m"
-            suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-            filename = "_".join([basename, suffix])
-            print("Save English - Male:\n"+ filename + "\n"+ text)
-            engine.save_to_file(text, filename+'test.mp3')
+            text = t1.get("1.0", tk.END).strip()
+            if not text:
+                clicked_text.config(text="Please enter some text", fg="red")
+                clicked_text.after(3000, lambda: clicked_text.config(text=""))
+                
+                return
+            
+            filename = filedialog.asksaveasfilename(defaultextension=".mp3")
+            if filename == "":
+                clicked_text.config(text="Please choose a file name")
+                return
+            print("Save English - Male: \n"+ filename + "\n"+ text)
+            engine.save_to_file(text, filename)
             engine.runAndWait()
-            clicked_text.config(text= "Saved in "+gender + "as " + filename)
+            clicked_text.config(text= "Saved in "+gender + " as " + filename, fg='black')
 
-        elif gender == 'English - Female':
+        elif gender == 'English-Female':
+ 
             engine = pyttsx3.init()
             engine.setProperty('rate', 125)
             engine.setProperty('volume', 1.0)
 
-            # speech voices id
-            voices = engine.getProperty('voices')
-            engine.setProperty('voice', voices[1].id)
-
-            text = t1.get("1.0", tk.END)        
-            basename = "mp_ttv_e_f"
-            suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-            filename = "_".join([basename, suffix])
-            print("Save English - Female:\n"+ filename + "\n"+ text)
-            engine.save_to_file(text, filename+'test.mp3')
-            engine.runAndWait()
-            clicked_text.config(text= "Saved in "+gender + " as " + filename)
-
-        elif gender =='Hindi - Female':
             text = t1.get("1.0", tk.END)
-            Message = text
-            speech = gTTS(text=Message)
+            
+            if not text:
+                clicked_text.config(text="Please enter some text", fg="red")
+                clicked_text.after(3000, lambda: clicked_text.config(text=""))
+                
+                return
+            
+            filetypes = [("MP3 files", "*.mp3"), ("All files", "*.*")]
+            filename = filedialog.asksaveasfilename(defaultextension=".mp3", filetypes=filetypes)
+            if not filename:
+                clicked_text.config(text="Please choose a file name")
+                return
 
-            basename = "mp_ttv_h_f"
-            suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-            filename = "_".join([basename, suffix])
-            speech.save(filename+'.mp3')
-            print("Speak Hindi - Female:\n"+ filename + "\n"+ text)
-            clicked_text.config(text= "Saved in "+gender + " as " + filename)
-
-        elif gender =='Hindi - Male Hera':
-            engine = pyttsx3.init()
-            engine.setProperty("rate", 130)
-            engine.setProperty('voice', 'Hi')
-
-            text = t1.get("1.0", tk.END)        
-            basename = "mp_ttv_h_m_h"
-            suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-            filename = "_".join([basename, suffix])
-            print("Save Hindi - Male Hera:\n"+ filename + "\n"+ text)
-            engine.save_to_file(text, filename+'test.mp3')
+            engine.save_to_file(text, filename)
             engine.runAndWait()
-            clicked_text.config(text= "Saved in "+gender + " as " + filename)
 
+            clicked_text.config(text= "Saved in "+gender + " as " + filename, fg='black')
 
-        elif gender == 'Hindi - Female Tara':
-            engine = pyttsx3.init()
-            engine.setProperty("rate", 130)
-            engine.setProperty('voice', 'Hi')
+        elif gender =='Hindi-Female':
+            text = t1.get("1.0", tk.END).strip()
+            if not text:
+                clicked_text.config(text="Please enter some text", fg="red")
+                clicked_text.after(3000, lambda: clicked_text.config(text=""))
+                
+                return
 
-            text = t1.get("1.0", tk.END)        
-            basename = "mp_ttv_h_m_t"
-            suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-            filename = "_".join([basename, suffix])
-            print("Save Hindi - Male Tara:\n"+ filename + "\n"+ text)
-            engine.save_to_file(text, filename+'test.mp3')
-            engine.runAndWait()
-            clicked_text.config(text= "Saved in "+gender + " as " + filename)
+            filename = filedialog.asksaveasfilename(defaultextension=".mp3")
+            if not filename:
+                clicked_text.config(text="Please choose a file name")
+                return
+
+            speech = gTTS(text=text)
+            speech.save(filename)
+            clicked_text.config(text= "Saved in "+gender + " as " + filename, fg='black')
+            
 
     # window heading label
     title_t2v = Label(window, text="Text to Voice", bg='white', font=("Century Gothic", 22, "bold"))
@@ -763,7 +769,7 @@ def mp_text2voice(title):
     gender_var.set('Select Language')  # Set the default value of the dropdown to Male
     gender_var.trace('w', on_gender_select)  # Call on_gender_select when the dropdown value changes
 
-    gender_menu = tk.OptionMenu(window, gender_var,  'English - Male', 'English - Female', 'Hindi - Female', 'Hindi - Female Tara', 'Hindi - Male Heera')
+    gender_menu = tk.OptionMenu(window, gender_var,  'English-Male', 'English-Female', 'Hindi-Female')
     gender_menu.config( width=18, bg=drop_color, cursor="hand2", )
     ToolTip(gender_menu, msg="Choose Language/Gender")
     gender_menu.place(x=205, y=280)
